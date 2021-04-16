@@ -58,13 +58,17 @@
 \definecolor{GoldenEarth}{HTML}{E7D192}
 \colorlet{name}{white}
 \colorlet{tagline}{PastelRed}
+\colorlet{contact}{white}
 \colorlet{heading}{black}
 \colorlet{headingrule}{black}
 \colorlet{subheading}{PastelRed}
 \colorlet{accent}{PastelRed}
-\colorlet{emphasis}{SlateGrey}
-\colorlet{body}{LightGrey}
-\colorlet{tag}{SlateGrey}
+\colorlet{emphasis}{black}
+\colorlet{body}{SlateGrey}
+\colorlet{tag}{black}
+\colorlet{employer}{black}
+\colorlet{rowheader}{RowHeader}
+\colorlet{colheader}{ColHeader}
 
 % Change some fonts, if necessary
 \renewcommand{\namefont}{\Huge\rmfamily\bfseries}
@@ -97,7 +101,7 @@
   \linkedin{nicolaszurbuchen}
   \github{nicolaszurbuchen}
   %% You MUST add the academicons option to \documentclass, then compile with LuaLaTeX or XeLaTeX, if you want to use \orcid or other academicons commands.
- \orcid{0000-0002-6704-9031}
+  \orcid{0000-0002-6704-9031}
   %% You can add your own arbtrary detail with
   %% \printinfo{symbol}{detail}[optional hyperlink prefix]
   % \printinfo{\faPaw}{Hey ho!}[https://example.com/]
@@ -107,22 +111,9 @@
   % \gitlab{your_id}
 }
 
-
-% Added two rectangles for style
-\begin{tikzpicture}[remember picture,overlay]
-	\fill[RowHeader]
-	([yshift=-0.5cm]current page.north west) rectangle ([yshift=-3.9cm]current page.east|-{pic cs:end});
-\end{tikzpicture}
-
-\begin{tikzpicture}[remember picture,overlay]
-\fill[ColHeader]
-([xshift=14cm]current page.north west) rectangle ([xshift=-0.5cm]current page.south east);
-\end{tikzpicture}
-
+\makecvdesign{0.5cm}{3.9cm}{14cm}
 
 \makecvheader
-%% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
-% \AtBeginEnvironment{itemize}{\small}
 
 %% Set the left/right column width ratio to 6:4.
 \columnratio{0.7}

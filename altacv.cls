@@ -280,7 +280,7 @@
     \medskip
     {\taglinefont\color{tagline}\@tagline\par}
     \medskip
-    {\personalinfofont\@personalinfo\par}
+    {\color{contact}\personalinfofont\@personalinfo\par}
     \end{minipage}%
     \altacv@right@photos\par%
   \endgroup\bigskip
@@ -419,4 +419,67 @@
   \pagestyle{empty}
   \color{body}
   \raggedright
+}
+
+% Additional cv commands
+
+\newcommand{\makecvdesign}[3]{
+\begin{tikzpicture}[remember picture,overlay]
+	\fill[rowheader]
+	([yshift=-#1]current page.north west) rectangle ([yshift=-#2]current page.east|-{pic cs:end});
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]
+    \fill[colheader]
+    ([xshift=#3]current page.north west) rectangle ([xshift=-#1]current page.south east);
+\end{tikzpicture}
+}
+
+% Additional cover letter commands
+
+\newcommand{\employerinfo}[1]{\def\@employerinfo{#1}}
+\newcommand{\clparagraph}[1]{\justify\large\noindent#1}
+\newcommand{\clobject}[1]{\justify\large\noindent\textbf{#1}\bigskip}
+
+\newcommand{\makecldesign}[4]{
+\begin{tikzpicture}[remember picture,overlay]
+	\fill[rowheader]
+	([yshift=-#1]current page.north west) rectangle ([yshift=-#2]current page.east|-{pic cs:end});
+\end{tikzpicture}
+
+\begin{tikzpicture}[remember picture,overlay]
+	\fill[colheader]
+	([xshift=#3]current page.north west) rectangle ([xshift=-#1, yshift=#4]current page.south east);
+\end{tikzpicture}
+}
+
+\newcommand{\makeclheader}[1]{%
+\begingroup
+    \bigskip
+    \begin{minipage}{\dimexpr0.98\linewidth-#1}%
+    \raggedright%
+    {\namefont\color{name}\MakeUppercase{\@name}\par}
+    \medskip
+    {\taglinefont\color{tagline}\@tagline\par}
+    \medskip
+    {\color{contact}\personalinfofont\@personalinfo\par}
+    \end{minipage}%
+    \begin{minipage}[t]{\dimexpr#1}
+	\flushright%
+	\bigskip
+	\bigskip
+	{\color{tag}\footnotesize\textit{To:}}\\
+	{\color{employer}\@employerinfo}\\
+	\bigskip
+	\color{tag}\textit{\today}
+    \end{minipage}
+\endgroup\bigskip\bigskip\bigskip
+}
+
+\newcommand{\makeclsignature}[4]{
+\bigskip
+\hspace{#1}\begin{tabular}{c}
+\includegraphics[width=#2]{#3} \\
+#4 \\
+\end{tabular}
 }
